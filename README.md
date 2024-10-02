@@ -1,24 +1,33 @@
-# README
+## usersテーブル
+| Column           | Type    | Options                   |
+|------------------|---------|---------------------------|
+| nickname         | string  | null: false               |
+| email            | string  | null: false, unique: true |
+| password         | string  | null: false               |
+| last_name_kanji  | string  | null: false               |
+| first_name_kanji | string  | null: false               |
+| last_name_kana   | string  | null: false               |
+| first_name_kana  | string  | null: false               |
+| birth_year       | integer | null: false               |
+| birth_month      | integer | null: false               |
+| birth_day        | integer | null: false               |
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### associations
+has_many :items
 
-Things you may want to cover:
+## itemsテーブル
+| Column        | Type       | Options                        |
+|---------------|------------|--------------------------------|
+| item_name     | string     | null: false                    |
+| explain       | text       | null: false                    |
+| category      | string     | null: false                    |
+| condition     | string     | null: false                    |
+| shipping_fee  | string     | null: false                    |
+| shipping_area | string     | null: false                    |
+| shipping_days | string     | null: false                    |
+| value         | integer    | null: false                    |
+| user_id       | references | null: false, foreign_key: true |
+| sold_out      | boolean    | null: false                    |
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### associations
+belongs_to :users
