@@ -24,14 +24,13 @@ has_many :purchase_records
 | condition_id     | integer    | null: false                    |
 | shipping_fee_id  | integer    | null: false                    |
 | shipping_area_id | integer    | null: false                    |
-| shipping_days_id | integer    | null: false                    |
+| shipping_day_id  | integer    | null: false                    |
 | price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
 ### associations
 belongs_to :user
 has_one :purchase_record
-belongs_to :item_info
 
 
 ## purchase_recordsテーブル
@@ -46,15 +45,15 @@ belongs_to :user
 belongs_to :item
 
 
-## shipping_addressテーブル
+## shipping_addressesテーブル
 | Column           | Type       | Options                        |
 |------------------|------------|--------------------------------|
-| postal_code      | integer    | null: false                    |
-| prefecture       | string     | null: false                    |
+| postal_code      | string     | null: false                    |
+| shipping_area_id | integer    | null: false                    |
 | municipality     | string     | null: false                    |
 | street_address   | string     | null: false                    |
 | building         | string     |                                |
-| telephone_number | integer    | null: false                    |
+| telephone_number | string     | null: false                    |
 | purchase_record  | references | null: false, foreign_key: true |
 
 ### associations
