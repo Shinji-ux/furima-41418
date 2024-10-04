@@ -1,11 +1,11 @@
 class Item < ApplicationRecord
   validates :item_name, presence: true
   validates :explain, presence: true
-  validates :category_id, presence: true
-  validates :condition_id, presence: true
-  validates :shipping_fee_id, presence: true
-  validates :shipping_area_id, presence: true
-  validates :shipping_day_id, presence: true
+  validates :category_id, presence: true, numericality: { other_than: 1 }
+  validates :condition_id, presence: true, numericality: { other_than: 1 }
+  validates :shipping_fee_id, presence: true, numericality: { other_than: 1 }
+  validates :shipping_area_id, presence: true, numericality: { other_than: 1 }
+  validates :shipping_day_id, presence: true, numericality: { other_than: 1 }
   validates :price, presence: true, format: { with: /\A(3[0-9]{2}|[4-9][0-9]{2}|[1-9][0-9]{3,6})\z/ }
   validates :image, presence: true
 
