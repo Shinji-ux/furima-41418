@@ -18,5 +18,4 @@ class Item < ApplicationRecord
   belongs_to :shipping_fee
   belongs_to :shipping_area
   belongs_to :shipping_day
-  
 end
