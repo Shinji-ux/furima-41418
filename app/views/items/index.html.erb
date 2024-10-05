@@ -148,9 +148,9 @@
       <% else %>
         <% @items.each do |item| %>
           <li class='list'>
-            <%= link_to '#' do %>
+            <%= link_to item_path(item.id) do %>
               <%= image_tag item.image, class: "item-img" %>
-              <%# if item.purchase_record_id.present? %>
+              <%# if item.purchase_record.present? %>
                 <%# div class='sold-out'>
                   <span>Sold Out!!</span>
                 </div>
