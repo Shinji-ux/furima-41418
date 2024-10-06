@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_login, only: [:new, :edit]
+  before_action :move_to_login, only: [:new, :edit, :destroy]
   before_action :correct_user, only: :edit
   before_action :set_item, only: [:show, :edit, :update]
 
@@ -36,8 +36,10 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    item.destroy
-    redirect_to root_path
+    if item.user == current_user
+      item.destroy
+      redirect_to root_path
+    end
   end
 
   private
