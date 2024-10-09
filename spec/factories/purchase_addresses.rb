@@ -7,8 +7,5 @@ FactoryBot.define do
     street_address { Faker::Lorem.sentence }
     building { Faker::Lorem.sentence }
     telephone_number { Faker::Number.number(digits: 11) }
-
-    association :user
-    association :item
   end
 end

@@ -23,6 +23,16 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
       end
+      it 'user_idが空では購入できない' do
+        @purchase_address.user_id = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空では購入できない' do
+        @purchase_address.item_id = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Item can't be blank")
+      end
       it 'postal_codeが空では購入できない' do
         @purchase_address.postal_code = ''
         @purchase_address.valid?
@@ -63,8 +73,18 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Telephone number can't be blank", "Telephone number is invalid")
       end
-      it 'telephone_numberが10桁か11桁以外では購入できない' do
+      it 'telephone_numberが8桁以下では購入できない' do
         @purchase_address.telephone_number = '090123123'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Telephone number is invalid")
+      end
+      it 'telephone_numberが12桁以上では購入できない' do
+        @purchase_address.telephone_number = '090123412341'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Telephone number is invalid")
+      end
+      it 'telephone_numberに数字以外が混じっているとでは購入できない' do
+        @purchase_address.telephone_number = 'a901234123a'
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Telephone number is invalid")
       end
