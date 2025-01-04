@@ -1,11 +1,11 @@
 class Item < ApplicationRecord
   validates :item_name, presence: true
   validates :explain, presence: true
-  validates :category_id, presence: true, numericality: { other_than: 1 }
-  validates :condition_id, presence: true, numericality: { other_than: 1 }
-  validates :shipping_fee_id, presence: true, numericality: { other_than: 1 }
-  validates :shipping_area_id, presence: true, numericality: { other_than: 1 }
-  validates :shipping_day_id, presence: true, numericality: { other_than: 1 }
+  validates :category_id, presence: true, numericality: { other_than: 1, message: "を選択してください" }
+  validates :condition_id, presence: true, numericality: { other_than: 1, message: "を選択してください" }
+  validates :shipping_fee_id, presence: true, numericality: { other_than: 1, message: "を選択してください" }
+  validates :shipping_area_id, presence: true, numericality: { other_than: 1, message: "を選択してください" }
+  validates :shipping_day_id, presence: true, numericality: { other_than: 1, message: "を選択してください" }
   validates :price, presence: true,
                     numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
   validates :image, presence: true

@@ -25,27 +25,27 @@ RSpec.describe Item, type: :model do
       it 'category_idが1では出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Category must be other than 1')
+        expect(@item.errors.full_messages).to include('Category を選択してください')
       end
       it 'condition_idが1では出品できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Condition must be other than 1')
+        expect(@item.errors.full_messages).to include('Condition を選択してください')
       end
       it 'shipping_fee_idが1では出品できない' do
         @item.shipping_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping fee must be other than 1')
+        expect(@item.errors.full_messages).to include('Shipping fee を選択してください')
       end
       it 'shipping_area_idが1では出品できない' do
         @item.shipping_area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping area must be other than 1')
+        expect(@item.errors.full_messages).to include('Shipping area を選択してください')
       end
       it 'shipping_day_idが1では出品できない' do
         @item.shipping_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping day must be other than 1')
+        expect(@item.errors.full_messages).to include('Shipping day を選択してください')
       end
       it 'priceが空では出品できない' do
         @item.price = ''

@@ -41,22 +41,22 @@ RSpec.describe PurchaseAddress, type: :model do
       it 'postal_codeにハイフンが含まれていないと購入できない' do
         @purchase_address.postal_code = '0010011'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@purchase_address.errors.full_messages).to include("Postal code はハイフンありで入力してください")
       end
       it 'postal_codeが7桁以外では購入できない' do
         @purchase_address.postal_code = '001-001'
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+        expect(@purchase_address.errors.full_messages).to include("Postal code はハイフンありで入力してください")
       end
       it 'shipping_area_idが空では購入できない' do
         @purchase_address.shipping_area_id = ''
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Shipping area can't be blank", "Shipping area is not a number")
+        expect(@purchase_address.errors.full_messages).to include("Shipping area can't be blank", "Shipping area を選択してください")
       end
       it 'shipping_area_idが1では購入できない' do
         @purchase_address.shipping_area_id = 1
         @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include("Shipping area must be other than 1")
+        expect(@purchase_address.errors.full_messages).to include("Shipping area を選択してください")
       end
       it 'municipalityが空では購入できない' do
         @purchase_address.municipality = ''
